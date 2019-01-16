@@ -12,37 +12,37 @@ import java.util.List;
 
 @SpringBootApplication
 public class StubRunnerApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(StubRunnerApplication.class, args);
 	}
-
 }
 
 
 @RestController
 class VisitController {
-	String body = "{\n" +
-			"  \"pacientInfo\":{\n" +
+
+	private static final String body = "{\n" +
+			"  \"patientInfo\":{\n" +
 			"    \"name\": \"Pepe\",\n" +
 			"    \"firstSurname\":\"Florez\",\n" +
 			"    \"secondSurname\":\"Garcia\",\n" +
 			"    \"gender\": \"Male\",\n" +
-			"    \"clinicHistory\":\"HXIS1233\"\n" +
+			"    \"medicalHistory\":\"HXIS1233\"\n" +
 			"  },\n" +
 			"  \"visitStatus\": \"scheduled\",\n" +
-			"  \"schedulTime\": \"10:10, 10/10/1010\",\n" +
+			"  \"scheduledTime\": \"10:10, 10/10/1010\",\n" +
 			"  \"arrivalTime\": \"10:10, 10/10/1010\",\n" +
 			"  \"agenda\": \"XDA123412\",\n" +
 			"  \"center\": \"Moraleja\",\n" +
 			"  \"resource\": \"EF Maria Gimenez Navarro\",\n" +
 			"  \"visitType\": \"Revision\",\n" +
 			"  \"comments\": \"Vive en una zona con alta contaminación\",\n" +
-			"  \"garante\": \"Sanitas SA\",\n" +
+			"  \"insurance\": \"Sanitas SA\",\n" +
 			"  \"observation\": \"Ha sufrido anteriormente de neumonia\",\n" +
 			"  \"visitChannel\": \"Videollamada\",\n" +
 			"  \"overload\": \"\"\n" +
 			"}";
+
 	@GetMapping("/visits")
 	ResponseEntity<String> visits(){
 		return ResponseEntity.status(200).body(body);
