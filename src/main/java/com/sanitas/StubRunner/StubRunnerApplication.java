@@ -26,21 +26,21 @@ class VisitController {
 			"    \"name\": \"Pepe\",\n" +
 			"    \"firstSurname\":\"Florez\",\n" +
 			"    \"secondSurname\":\"Garcia\",\n" +
-			"    \"gender\": \"Male\",\n" +
-			"    \"medicalHistory\":\"HXIS1233\"\n" +
+			"    \"gender\": \"male\",\n" +
+			"    \"medicalHistory\":\"XDSSI\"\n" +
 			"  },\n" +
 			"  \"visitStatus\": \"scheduled\",\n" +
-			"  \"scheduledTime\": \"10:10, 10/10/1010\",\n" +
-			"  \"arrivalTime\": \"10:10, 10/10/1010\",\n" +
-			"  \"agenda\": \"XDA123412\",\n" +
+			"  \"scheduledTime\": \"2010-06-15T00:00:00\",\n" +
+			"  \"arrivalTime\": \"2010-06-15T02:00:00\",\n" +
+			"  \"agenda\": \"XDD\",\n" +
 			"  \"center\": \"Moraleja\",\n" +
-			"  \"resource\": \"EF Maria Gimenez Navarro\",\n" +
-			"  \"visitType\": \"Revision\",\n" +
-			"  \"comments\": \"Vive en una zona con alta contaminación\",\n" +
+			"  \"resource\": \"EF\",\n" +
+			"  \"service\": \"enfermeria\",\n" +
+			"  \"visitType\": \"revision\",\n" +
 			"  \"insurance\": \"Sanitas SA\",\n" +
 			"  \"observation\": \"Ha sufrido anteriormente de neumonia\",\n" +
-			"  \"visitChannel\": \"Videollamada\",\n" +
-			"  \"overload\": \"\"\n" +
+			"  \"visitChannel\": \"videollamada\",\n" +
+			"  \"overload\": false\n" +
 			"}";
 
 	@GetMapping("/visits")

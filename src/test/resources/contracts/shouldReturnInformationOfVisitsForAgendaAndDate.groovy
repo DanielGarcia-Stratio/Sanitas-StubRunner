@@ -1,13 +1,20 @@
 import groovy.json.JsonSlurper
 import org.springframework.cloud.contract.spec.Contract
-def jsonSlurper = new JsonSlurper()
+
+import java.text.SimpleDateFormat
+
+//if date is not especified current date is returned
 
 Contract.make {
     description "should return the full info of the visit"
     request {
-        url "/visits"
         method "GET"
-
+        urlPath("/visits") {
+            queryParameters {
+                parameter 'agenda': value(consumer(regex("[A-Z]+[0-9]+")), producer("XDA123412"))
+                parameter 'date': value(consumer(regex(isoDate())), producer("1010-11-15"))
+            }
+        }
     }
     response {
         status 200
@@ -20,9 +27,9 @@ Contract.make {
                         medicalHistory: $(p(anyNonEmptyString()),c("XDSSI"))
                 ],
                 visitStatus : $(p(regex('(scheduled|done|canceled)')), c("scheduled")),
-                scheduledTime: $(p(anyDateTime()),c("2010-06-15T00:00:00")),
-                arrivalTime: $(p(anyDateTime()),c("2010-06-15T02:00:00")),
-                agenda: $(p(anyNonEmptyString()),c("XDD")),
+                scheduledTime: "${fromRequest().query("date")}T10:30:00",
+                arrivalTime: "${fromRequest().query("date")}T10:30:00",
+                agenda: $(p(anyNonEmptyString()),c("${fromRequest().query("agenda")}")),
                 center:$(p(anyNonEmptyString()),c("Moraleja")),
                 resource:$(p(anyNonEmptyString()),c("EF")),
                 service: "enfermeria",

@@ -1,13 +1,29 @@
 import groovy.json.JsonSlurper
 import org.springframework.cloud.contract.spec.Contract
-def jsonSlurper = new JsonSlurper()
+import wiremock.org.apache.commons.lang3.ObjectUtils
+
+import java.text.SimpleDateFormat
+//if date is not especified current date is returned
+
+SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-DD");
+String strDate = sm.format(2015-12-06)
+
+String agendaId = ""
 
 Contract.make {
     description "should return the full info of the visit"
     request {
-        url "/visits"
         method "GET"
+        urlPath("/visits") {
 
+            // Each parameter is specified in form
+            // `'paramName' : paramValue` where parameter value
+            // may be a simple literal or one of matcher functions,
+            // all of which are used in this example.
+            queryParameters {
+                parameter 'date': value(consumer(regex(isoDate())), producer("1010-11-15"))
+            }
+        }
     }
     response {
         status 200
@@ -20,8 +36,8 @@ Contract.make {
                         medicalHistory: $(p(anyNonEmptyString()),c("XDSSI"))
                 ],
                 visitStatus : $(p(regex('(scheduled|done|canceled)')), c("scheduled")),
-                scheduledTime: $(p(anyDateTime()),c("2010-06-15T00:00:00")),
-                arrivalTime: $(p(anyDateTime()),c("2010-06-15T02:00:00")),
+                scheduledTime: "${fromRequest().query("date")}T10:30:00",
+                arrivalTime: "${fromRequest().query("date")}T10:30:00",
                 agenda: $(p(anyNonEmptyString()),c("XDD")),
                 center:$(p(anyNonEmptyString()),c("Moraleja")),
                 resource:$(p(anyNonEmptyString()),c("EF")),

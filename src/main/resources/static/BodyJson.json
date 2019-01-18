@@ -3,19 +3,19 @@
     "name": "Pepe",
     "firstSurname":"Florez",
     "secondSurname":"Garcia",
-    "gender": "Male",
-    "medicalHistory":"HXIS1233"
+    "gender": "male",
+    "medicalHistory":"XDSSI"
   },
   "visitStatus": "scheduled",
-  "scheduledTime": "10:10, 10/10/1010",
-  "arrivalTime": "10:10, 10/10/1010",
-  "agenda": "XDA123412",
+  "scheduledTime": "2010-06-15T00:00:00",
+  "arrivalTime": "2010-06-15T02:00:00",
+  "agenda": "XDD",
   "center": "Moraleja",
-  "resource": "EF Maria Gimenez Navarro",
-  "visitType": "Revision",
-  "comments": "Vive en una zona con alta contaminación",
+  "resource": "EF",
+  "service": "enfermeria",
+  "visitType": "revision",
   "insurance": "Sanitas SA",
   "observation": "Ha sufrido anteriormente de neumonia",
-  "visitChannel": "Videollamada",
-  "overload": ""
+  "visitChannel": "videollamada",
+  "overload": false
 }
